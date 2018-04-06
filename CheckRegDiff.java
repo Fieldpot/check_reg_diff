@@ -9,8 +9,10 @@ class CheckRegDiff{
   public static void main(String args[]){
     char c;
 		String regString = null;
-    String inputText = null;
+    String convertedString = null;
 
+
+    //Input Regex from CLI
     try(BufferedReader reader = new BufferedReader (new InputStreamReader(System.in))){
     
       System.out.println("input regex string first : ");
@@ -20,9 +22,13 @@ class CheckRegDiff{
       e.printStackTrace();
     } 
 
+
 		Pattern pattern = Pattern.compile(regString); 
+    //Use for statement to create char strings
 		for (char i = 0; i < 127; i++){
+      //convert char to string
       inputText = "" + i;
+      //This may be inefficient to create an each class inside for statement...
       Matcher matcher = pattern.matcher(inputText);
       if (matcher.matches()){
         System.out.println(inputText);
